@@ -10,9 +10,9 @@ module.exports = app => {
   router.get('/news/:id', controller.home.news);
 
   // 用户
-  router.post('/vue-element-admin/user/login', controller.user.login);
-  router.post('/vue-element-admin/user/registered', controller.user.registered);
-  router.get('/vue-element-admin/user/info', controller.user.getUserInfo);
-  router.post('/vue-element-admin/user/logout', controller.user.logout);
+  router.post('/api/user/login', controller.user.login);
+  router.post('/api/user/registered', controller.user.registered);
+  router.get('/api/user/info', controller.user.getUserInfo);
+  router.post('/pai/user/logout', controller.user.logout);
 
 };

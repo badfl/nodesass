@@ -13,32 +13,34 @@ class UserService extends Service {
     if (!corrct) {
       result = {
         message: '无此用户',
-        status: 200,
+        code: 200,
         data: {},
       };
     } else {
       const password = await this.getMd5Data(params.password);
       if (password === corrct.password) {
-        console.log(corrct);
-        const v = JSON.parse(corrct);
-        console.log(v.name);
+        let v;
+        try {
+          v = JSON.parse(JSON.stringify(corrct));
+        } catch (error) {
+          v = corrct;
+        }
         result = {
           message: '登录成功',
-          status: 200,
+          code: 200,
           data: {
-            roles: corrct.roles,
-            token: corrct.token,
-            introduction: corrct.introduction,
-            avatar: corrct.avatar,
-            name: corrct.name,
+            roles: v.roles,
+            token: v.token,
+            introduction: v.introduction,
+            avatar: v.avatar,
+            name: v.name,
           },
         };
-        console.log(result);
-        // return corrct.token;
+        // console.log(result);
       } else {
         result = {
           message: '密码错误',
-          status: 200,
+          code: 200,
           data: {
           },
         };
@@ -63,7 +65,7 @@ class UserService extends Service {
       await ctx.model.User.insertMany([ p ]);
       result = {
         message: '注册成功',
-        status: 200,
+        code: 200,
         data: {
           token,
         },
@@ -71,7 +73,7 @@ class UserService extends Service {
     } else {
       result = {
         message: '已存在用户',
-        status: 200,
+        code: 200,
         data: {},
       };
     }
@@ -86,15 +88,26 @@ class UserService extends Service {
     if (!corrct) {
       result = {
         message: '无此用户',
-        status: 200,
+        code: 200,
         data: {},
       };
     } else {
+      let v;
+      try {
+        v = JSON.parse(JSON.stringify(corrct));
+      } catch (error) {
+        v = corrct;
+      }
       result = {
         message: '成功',
-        status: 200,
+        code: 200,
         data: {
-          username: corrct.username,
+          username: v.username,
+          roles: v.roles,
+          token: v.token,
+          introduction: v.introduction,
+          avatar: v.avatar,
+          name: v.name,
         },
       };
     }

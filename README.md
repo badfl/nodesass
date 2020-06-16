@@ -13,6 +13,7 @@ see [egg docs][egg] for more detail.
 ```bash
 $ npm i
 $ npm run dev
+$ apidoc -i D:/jeetest/mongo-wenchat/app/controller/ -o D:/jeetest/mongo-wenchat/apidoc
 $ open http://localhost:7001/
 ```
 
