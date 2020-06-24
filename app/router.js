@@ -15,4 +15,6 @@ module.exports = app => {
   router.get('/api/user/info', controller.user.getUserInfo);
   router.post('/pai/user/logout', controller.user.logout);
 
+  // 帖子
+  router.post('/api/post/addpost', controller.posts.addPost);
 };

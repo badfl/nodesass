@@ -22,6 +22,8 @@ const infoRule = {
 };
 
 class UserController extends Controller {
+
+/* eslint-disable */
   /**
    *
    * @api {POST} /api/user/login 用户登录
@@ -64,6 +66,7 @@ class UserController extends Controller {
    *
    *
    */
+  /* eslint-enable */
   async login() {
     const ctx = this.ctx;
     ctx.validate(createRule, ctx.request.body);
@@ -71,6 +74,7 @@ class UserController extends Controller {
     ctx.body = result;
   }
 
+/* eslint-disable */
   /**
    *
    * @api {POST} /api/user/registered 用户注册
@@ -105,6 +109,7 @@ class UserController extends Controller {
    *
    *
    */
+  /* eslint-enable */
   async registered() {
     const ctx = this.ctx;
     ctx.validate(createRule, ctx.request.body);
@@ -112,6 +117,7 @@ class UserController extends Controller {
     ctx.body = result;
   }
 
+/* eslint-disable */
   /**
    *
    * @api {GET} /api/user/info 获取用户信息
@@ -147,6 +153,7 @@ class UserController extends Controller {
    *
    *
    */
+  /* eslint-enable */
   async getUserInfo() {
     const ctx = this.ctx;
     ctx.validate(infoRule, ctx.request.query);
