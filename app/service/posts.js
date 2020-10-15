@@ -28,19 +28,24 @@ class PostsService extends Service {
       state: params.state || 'draft',
       publishedDate: Date.now(),
     });
-    ctx.model.Posts.create(Post, function(err) {
-      if (err) {
-        console.log(err);
-        result = {
-          message: err,
-          code: 200,
-        };
-      }
-      result = {
-        message: '添加成功',
-        code: 200,
-      };
-    });
+
+    // await ctx.model.Posts.create(Post, function(err) {
+    //   if (err) {
+    //     console.log(err);
+    //     result = {
+    //       message: err,
+    //       code: 200,
+    //     };
+    //   }
+    //   result = {
+    //     message: '添加成功',
+    //     code: 200,
+    //   };
+    //   console.log('添加成功')        
+    // });
+
+    // console.log('请求成功')
+    console.log('请求成功', result);
     return result;
   }
 
