@@ -5,7 +5,7 @@ const crypto = require('crypto');
 
 class UserService extends Service {
   async login(params) { // 登录
-    const ctx = this.ctx;
+    const { ctx, app } = this;
     const corrct = await ctx.model.User.findOne({ username: params.username });
 
 
@@ -14,23 +14,28 @@ class UserService extends Service {
       result = {
         message: '无此用户',
         code: 200,
-        data: {},
+        result: {},
       };
     } else {
       const password = await this.getMd5Data(params.password);
       if (password === corrct.password) {
+
         let v;
         try {
           v = JSON.parse(JSON.stringify(corrct));
         } catch (error) {
           v = corrct;
         }
+        const token = app.jwt.sign({
+          name: v.username,
+        }, app.config.jwt.secret);
+
         result = {
           message: '登录成功',
           code: 200,
-          data: {
+          result: {
             roles: v.roles,
-            token: v.token,
+            token: token,
             introduction: v.introduction,
             avatar: v.avatar,
             name: v.name,
@@ -41,7 +46,7 @@ class UserService extends Service {
         result = {
           message: '密码错误',
           code: 200,
-          data: {
+          result: {
           },
         };
       }
@@ -66,7 +71,7 @@ class UserService extends Service {
       result = {
         message: '注册成功',
         code: 200,
-        data: {
+        result: {
           token,
         },
       };
@@ -74,7 +79,7 @@ class UserService extends Service {
       result = {
         message: '已存在用户',
         code: 200,
-        data: {},
+        result: {},
       };
     }
     return result;
@@ -89,7 +94,7 @@ class UserService extends Service {
       result = {
         message: '无此用户',
         code: 200,
-        data: {},
+        result: {},
       };
     } else {
       let v;
@@ -101,7 +106,7 @@ class UserService extends Service {
       result = {
         message: '成功',
         code: 200,
-        data: {
+        result: {
           username: v.username,
           roles: v.roles,
           token: v.token,

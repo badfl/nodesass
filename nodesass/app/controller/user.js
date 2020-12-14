@@ -17,7 +17,7 @@ const createRule = {
 const infoRule = {
   token: {
     type: 'string',
-    required: true,
+    required: false,
   },
 };
 
@@ -141,7 +141,7 @@ class UserController extends Controller {
    * {
    *  "message": "成功",
    *  "code": 200,
-   *  "data": {
+   *  "result": {
    *     "username": "admin",
    *     "roles": ["admin"],
    *     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNTkyMjAzNzkyfQ.jF_Fn3bhxrpSjtYYQPmbkCyXlTadKSaW-F0U1KkhnJk",
@@ -167,7 +167,7 @@ class UserController extends Controller {
     ctx.body = {
       message: '注销成功',
       status: 200,
-      data: {},
+      result: {},
     };
   }
 }
