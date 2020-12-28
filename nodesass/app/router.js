@@ -17,4 +17,8 @@ module.exports = app => {
 
   // 帖子
   router.post('/api/post/addpost', controller.posts.addPost);
+
+  // 菜单
+  router.post('/api/nav/add', controller.navList.add);
+  router.get('/api/nav/get', controller.navList.get);
 };

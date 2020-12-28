@@ -43,6 +43,7 @@ module.exports = appInfo => {
   config.validate = {
     // convert: false,
     // validateRoot: false,
+    widelyUndefined: true
   };
 
   // add your user config here
