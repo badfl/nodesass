@@ -26,7 +26,7 @@ class NavListController extends Controller {
 
     ctx.validate(addRule, ctx.request.body);
     const result = await ctx.service.navList.add(ctx.request.body);
-    console.log('con::',result)
+    // console.log('con::',result)
     ctx.body = {
       message:'添加成功',
       code:200,

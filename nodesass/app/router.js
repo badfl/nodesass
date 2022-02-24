@@ -21,4 +21,8 @@ module.exports = app => {
   // 菜单
   router.post('/api/nav/add', controller.navList.add);
   router.get('/api/nav/get', controller.navList.get);
+
+  // 权限
+  router.post('/api/userrole/add', controller.userRole.add);
+  router.get('/api/userrole/get', controller.userRole.get);
 };

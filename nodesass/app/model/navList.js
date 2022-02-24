@@ -17,6 +17,7 @@ module.exports = app => {
     redirect: {type: String},
     path: {type: String},
     publishedDate: {type: Date, default: Date.now},
+    createDate:{type: Date, default: Date.now},
     updateDate: {type: Date, default: Date.now},
     state:{type:String, options: 'draft, published, archived', default: 'published'}
   })
